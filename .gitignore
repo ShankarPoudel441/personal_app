@@ -61,6 +61,7 @@ static/
 
 #Idea folders
 .idea
+security/
 
 # Byte-compiled / temporary
 *.tmp
