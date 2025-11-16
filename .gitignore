@@ -54,10 +54,13 @@ staticfiles/
 static/
 
 # IDE / editor
-.vscode/
-.idea/
+*.vscode/
+*.idea/
 *.swp
 *.swo
+
+#Idea folders
+.idea
 
 # Byte-compiled / temporary
 *.tmp
