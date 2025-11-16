@@ -1,0 +1,62 @@
+{% extends 'profileapp/base.html' %}
+{% block title %}Torch Chatbot{% endblock %}
+
+{% block extra_head %}
+<script>
+  // Django will inject the csrf_token into the template context
+  const csrftoken = '{{ csrf_token }}';
+
+  async function sendMessage() {
+    const textEl = document.getElementById('message');
+    const chat = document.getElementById('chatlog');
+    const userText = textEl.value.trim();
+    if (!userText) return;
+
+    // Show user bubble
+    chat.innerHTML += `<div class="bubble user"><p>${userText}</p></div>`;
+    textEl.value = '';
+
+    // Prepare form data
+    const form = new FormData();
+    form.append('message', userText);
+
+    // Send to Django API with CSRF header
+    const resp = await fetch('/api/chat/', {
+      method: 'POST',
+      headers: {
+        'X-Requested-With': 'fetch',
+        'X-CSRFToken': csrftoken
+      },
+      body: form
+    });
+
+    let reply = "Error contacting server.";
+    try {
+      const data = await resp.json();
+      reply = data.reply || data.error || reply;
+    } catch (e) {
+      reply = "Error parsing server response.";
+    }
+
+    // Show bot bubble
+    chat.innerHTML += `<div class="bubble bot"><p>${reply}</p></div>`;
+    chat.scrollTop = chat.scrollHeight;
+  }
+</script>
+{% endblock %}
+
+{% block content %}
+<h2>Torch Chatbot (Personal Facts)</h2>
+<div class="grid">
+  <div>
+    <div id="chatlog" class="chat" style="height: 360px; overflow: auto; margin-bottom: .6rem;"></div>
+    <textarea id="message" rows="3" placeholder="Ask something about me..."></textarea>
+    <button onclick="sendMessage()">Send</button>
+    <p><small>Tip: populate <code>profileapp/data/personal_facts.yaml</code> to teach the bot.</small></p>
+  </div>
+  <div>
+    <h3>How it works</h3>
+    <p>This bot uses a Torch-backed SentenceTransformer to embed your personal facts and find the closest answer by cosine similarity.</p>
+  </div>
+</div>
+{% endblock %}

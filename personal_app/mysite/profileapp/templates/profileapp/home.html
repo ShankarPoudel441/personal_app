@@ -1,0 +1,53 @@
+{% extends 'profileapp/base.html' %}
+{% block title %}About Me{% endblock %}
+{% block content %}
+<article>
+  <h2>About Me</h2>
+  {% if person %}
+
+    {% if person.photo_url %}
+      <div style="float:right; margin: 0 0 1rem 1rem;">
+        <img src="{{ person.photo_url }}"
+             alt="{{ person.full_name }}"
+             style="max-width: 200px; border-radius: 50%; box-shadow: 0 0 8px rgba(0,0,0,.1);" />
+      </div>
+    {% endif %}
+
+    <h3>{{ person.full_name }}</h3>
+    <p><em>{{ person.headline }}</em></p>
+    <p>{{ person.bio|linebreaks }}</p>
+    <ul>
+      {% if person.email %}<li>Email: <a href="mailto:{{ person.email }}">{{ person.email }}</a></li>{% endif %}
+      {% if person.phone %}<li>Phone: {{ person.phone }}</li>{% endif %}
+      {% if person.location %}<li>Location: {{ person.location }}</li>{% endif %}
+    </ul>
+    <hr>
+    <h4>Education</h4>
+    <ul>
+      {% for ed in person.educations.all %}
+        <li><strong>{{ ed.school }}</strong> — {{ ed.degree }} {{ ed.field }} ({{ ed.start_year }}–{{ ed.end_year }})<br>{{ ed.details }}</li>
+      {% empty %}
+        <li>Add your education in the admin.</li>
+      {% endfor %}
+    </ul>
+    <h4>Work Experience</h4>
+    <ul>
+      {% for w in person.experiences.all %}
+        <li><strong>{{ w.company }}</strong> — {{ w.role }} ({{ w.start_date }}–{{ w.end_date }})<br>{{ w.description }}</li>
+      {% empty %}
+        <li>Add your work experience in the admin.</li>
+      {% endfor %}
+    </ul>
+    <h4>Projects</h4>
+    <ul>
+      {% for p in person.projects.all %}
+        <li><strong>{{ p.title }}</strong> — {{ p.description }} {% if p.url %}<a href="{{ p.url }}" target="_blank">[link]</a>{% endif %}</li>
+      {% empty %}
+        <li>Add your projects in the admin.</li>
+      {% endfor %}
+    </ul>
+  {% else %}
+    <p>No profile yet. Head to <a href="/admin/">admin</a> and create a PersonalInfo entry.</p>
+  {% endif %}
+</article>
+{% endblock %}

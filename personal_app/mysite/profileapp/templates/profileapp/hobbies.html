@@ -1,0 +1,34 @@
+{% extends 'profileapp/base.html' %}
+{% block title %}Hobbies & Blog{% endblock %}
+
+{% block content %}
+<article>
+  <h2>Hobbies & Blog</h2>
+
+  {% if person %}
+    <p>
+      A small corner for my hobbies: poems, thoughts on movies and anime, and other personal writings.
+    </p>
+  {% endif %}
+
+  {% if posts %}
+    {% for post in posts %}
+      <section style="margin-bottom: 2rem;">
+        <h3>{{ post.title }}</h3>
+        <p>
+          <small>
+            {{ post.created_at|date:"F j, Y" }} ·
+            {{ post.get_category_display }}
+          </small>
+        </p>
+        <p style="white-space: pre-line;">
+          {{ post.content }}
+        </p>
+        <hr>
+      </section>
+    {% endfor %}
+  {% else %}
+    <p>No posts yet. Add some poems or blogs in the admin under Hobby posts.</p>
+  {% endif %}
+</article>
+{% endblock %}

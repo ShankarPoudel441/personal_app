@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="e70fb0ba-f213-4048-abe6-ccce6e4c4d65" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/Personal_app.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/personal_app/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/personal_app/mysite/manage.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/personal_app/mysite/mysite/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/personal_app/mysite/mysite/settings.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/personal_app/mysite/mysite/urls.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/personal_app/mysite/mysite/wsgi.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/personal_app/mysite/profileapp/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/personal_app/mysite/profileapp/admin.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/personal_app/mysite/profileapp/apps.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/personal_app/mysite/profileapp/chatbot.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/personal_app/mysite/profileapp/data/personal_facts.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/personal_app/mysite/profileapp/forms.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/personal_app/mysite/profileapp/models.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/personal_app/mysite/profileapp/static/profileapp/placeholder.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/personal_app/mysite/profileapp/templates/profileapp/base.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/personal_app/mysite/profileapp/templates/profileapp/chatbot.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/personal_app/mysite/profileapp/templates/profileapp/hobbies.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/personal_app/mysite/profileapp/templates/profileapp/home.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/personal_app/mysite/profileapp/urls.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/personal_app/mysite/profileapp/views.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/personal_app/requirements.txt" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 7
+}</component>
+  <component name="ProjectId" id="35P9OFx58bxOM5vn8Xq3nDNk1Di" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;
+  }
+}</component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-python-sdk-f69e5c277ee4-cbfc7b97e6b2-com.jetbrains.pycharm.community.sharedIndexes.bundled-PC-252.27397.106" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="e70fb0ba-f213-4048-abe6-ccce6e4c4d65" name="Changes" comment="" />
+      <created>1763000805602</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1763000805602</updated>
+    </task>
+    <servers />
+  </component>
+</project>
