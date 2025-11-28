@@ -1,0 +1,261 @@
+{% extends 'profileapp/base.html' %}
+
+{% block title %}Resume – Shankar Poudel{% endblock %}
+
+{% block content %}
+<article class="resume">
+
+  <!-- Header: name + headline + quick contacts -->
+  <header class="resume-header">
+    <h1 class="resume-name">Shankar Poudel</h1>
+    <p class="resume-headline">
+      Computer Engineer · Machine Learning & Intelligent Compaction · AI/LLM Systems
+    </p>
+    <div class="resume-contact-row">
+      <span>Reno, Nevada, USA</span>
+      <span>⋅</span>
+      <span>+1 (775) 338-2203</span>
+      <span>⋅</span>
+      <a href="mailto:shankarpoudel441@gmail.com">shankarpoudel441@gmail.com</a>
+      <span>⋅</span>
+      <a href="https://www.linkedin.com/in/theshankarpoudel/" target="_blank" rel="noopener">
+        LinkedIn
+      </a>
+      <span>⋅</span>
+      <a href="https://github.com/ShankarPoudel441" target="_blank" rel="noopener">
+        GitHub
+      </a>
+    </div>
+  </header>
+
+  <div class="resume-grid">
+    <!-- MAIN COLUMN -->
+    <section class="resume-main">
+
+      <!-- Intro paragraph (no "Profile" title) -->
+      <section class="resume-section">
+        <p>
+          Research-oriented Computer Engineer with experience spanning Intelligent Compaction, clinical data systems,
+          and emerging LLM applications. I enjoy working at the intersection of theory and deployment: building
+          probabilistic and ML models from sensor data, validating them in the field, and wrapping them in robust
+          cloud–edge pipelines. My current interests include ML for physical systems (e.g., RTDensity/RICA),
+          retrieval-augmented LLMs (fine-tuned GPT-2 + RAG), and production-ready chatbot systems, with an eye toward
+          future research roles and PhD-level work in ML/LLMs.
+        </p>
+      </section>
+
+      <!-- EDUCATION FIRST -->
+      <section class="resume-section">
+        <h2 class="resume-section-title">Education</h2>
+
+        <div class="resume-item">
+          <div class="resume-item-header">
+            <div>
+              <h3>M.S. in Computer Science & Engineering</h3>
+              <p class="resume-item-subtitle">University of Nevada, Reno, USA</p>
+            </div>
+            <span class="resume-item-dates">Aug 2021 – Aug 2023 · GPA: 4.0</span>
+          </div>
+          <p class="resume-note">
+            Thesis: <strong>Retrofit Intelligent Compaction Analyzer (RICA)</strong> — Bayesian probabilistic modeling
+            and clustering of asphalt compaction stages using roller vibration patterns to predict field density
+            with high accuracy.
+          </p>
+        </div>
+
+        <div class="resume-item">
+          <div class="resume-item-header">
+            <div>
+              <h3>B.E. in Electronics & Communication Engineering</h3>
+              <p class="resume-item-subtitle">Tribhuvan University (IOE), Nepal</p>
+            </div>
+            <span class="resume-item-dates">Nov 2014 – Oct 2018 · GPA: 3.7</span>
+          </div>
+          <p class="resume-note">
+            Major project: <strong>speech-to-command systems</strong>, converting spoken input into structured
+            commands for downstream applications (e.g., invoicing and device/operation control).
+          </p>
+        </div>
+      </section>
+
+      <!-- EXPERIENCE AFTER EDUCATION -->
+      <section class="resume-section">
+        <h2 class="resume-section-title">Experience</h2>
+
+        <div class="resume-item">
+          <div class="resume-item-header">
+            <div>
+              <h3>Computer Engineer</h3>
+              <p class="resume-item-subtitle">G4-Tech, USA</p>
+            </div>
+            <span class="resume-item-dates">Aug 2023 – Present</span>
+          </div>
+          <ul>
+            <li>
+              Lead developer for <strong>RTDensity (RICA)</strong>, a real-time Intelligent Compaction (IC) platform combining
+              accelerometer signals, GPS, and temperature data to predict asphalt density within <strong>±1%</strong> of ground truth.
+            </li>
+            <li>
+              Designed and maintained a multi-service <strong>Docker-based edge architecture</strong> integrating DAQ, GPS,
+              temperature, calibration workflows, and cloud synchronization (Azure IoT, InfluxDB, CosmosDB, KustoDB).
+            </li>
+            <li>
+              Implemented CI/CD and calibration/data pipelines for analytics and reporting using InfluxDB and KQL,
+              enabling field deployment and validation with partners such as <strong>BDG, BRI, and George Reed Inc.</strong>
+            </li>
+            <li>
+              Contributed to internal LLM tools, including GPT-2 + RAG components for documentation support and
+              engineering workflows.
+            </li>
+          </ul>
+        </div>
+
+        <div class="resume-item">
+          <div class="resume-item-header">
+            <div>
+              <h3>Research Assistant</h3>
+              <p class="resume-item-subtitle">
+                Electrical & Biomedical Engineering, University of Nevada, Reno
+              </p>
+            </div>
+            <span class="resume-item-dates">Oct 2021 – Aug 2023</span>
+          </div>
+          <ul>
+            <li>
+              Developed an Intelligent Compaction tool using signal processing and unsupervised learning to estimate
+              compaction density from roller vibration patterns.
+            </li>
+            <li>
+              Achieved <strong>±1%</strong> prediction accuracy on compaction density using clustering, Bayesian analysis,
+              and field-validated data.
+            </li>
+            <li>
+              Built real-time visualization and operator tools using Python, Kivy, InfluxDB, and Docker.
+            </li>
+          </ul>
+        </div>
+
+        <div class="resume-item">
+          <div class="resume-item-header">
+            <div>
+              <h3>Machine Learning Engineer</h3>
+              <p class="resume-item-subtitle">D-Tech Office System Pvt. Ltd., Kathmandu, Nepal</p>
+            </div>
+            <span class="resume-item-dates">Sep 2020 – Aug 2021</span>
+          </div>
+          <ul>
+            <li>
+              Designed and maintained a <strong>content-based recommendation system</strong> for online shopping platforms
+              using product metadata and user interaction features.
+            </li>
+            <li>
+              Contributed to a Nepali Text-to-Speech (TTS) pipeline using MFCC features and Mbrola-based synthesis.
+            </li>
+            <li>
+              Tools: Python, Scikit-Learn, SciPy, MFCC, Mbrola.
+            </li>
+          </ul>
+        </div>
+
+        <div class="resume-item">
+          <div class="resume-item-header">
+            <div>
+              <h3>Software Engineer</h3>
+              <p class="resume-item-subtitle">Wiseyak Solutions Pvt. Ltd., Kathmandu, Nepal</p>
+            </div>
+            <span class="resume-item-dates">May 2019 – Sep 2020</span>
+          </div>
+          <ul>
+            <li>
+              Built backend microservices for a FHIR-based <strong>Electronic Health Record (EHR)</strong> system using
+              graph databases and ontology-driven design.
+            </li>
+            <li>
+              Developed injury-type classification models (TF-IDF + SVM) achieving
+              <strong>Precision: 83%</strong>, <strong>F1: 0.68</strong> on clinical datasets.
+            </li>
+            <li>
+              Created annotation tools for medical images with ClojureScript and D-Graph; deployed services with Docker.
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- PROJECTS (with added major speech project) -->
+      <section class="resume-section">
+        <h2 class="resume-section-title">Selected Projects</h2>
+        <ul class="resume-bullet-list">
+          <li>
+            <strong>Personal LLM Stack – Fine-tuned GPT-2 + RAG</strong> — Cost-efficient local LLM backend using a
+            fine-tuned GPT-2 model with Retrieval-Augmented Generation over a vector database (SentenceTransformers).
+            Exposed via a structured API for a personal site to support research Q&A, RTDensity documentation,
+            and personal notes.
+          </li>
+          <li>
+            <strong>Multi-Product Customer Support Chatbot</strong> — Production-oriented chatbot for a commercial platform
+            (company name hidden) that handles FAQs, product exploration, and basic support flows. Designed with modular
+            tools for product lookup, templated answers, and future RAG integration.
+          </li>
+          <li>
+            <strong>Speech-to-Command Control System (Undergraduate Major Project)</strong> — Designed a system that converts
+            spoken input into structured commands, forming the basis for downstream applications like voice-driven invoicing
+            and task execution. Used MFCC features and neural models for robust command recognition in noisy environments.
+          </li>
+          <li>
+            <strong>Voice Order System</strong> — Voice-to-invoice application using MFCC feature extraction and CNN models
+            to generate structured invoices from spoken commands.
+          </li>
+          <li>
+            <strong>Cancerous Mass Detection in Mammograms</strong> — Image segmentation tool using a transfer-learned
+            RUNet model to highlight suspicious regions in mammogram images.
+          </li>
+          <li>
+            <strong>OCR for Nepali/English Documents</strong> — CNN-based OCR system to convert scanned documents into
+            editable DOCX files, improving access to legacy content in multiple languages.
+          </li>
+        </ul>
+      </section>
+    </section>
+
+    <!-- SIDE COLUMN -->
+    <aside class="resume-side">
+      <section class="resume-section">
+        <h2 class="resume-section-title">Core Skills</h2>
+        <ul class="resume-bullet-list">
+          <li>Machine Learning & Predictive Modeling</li>
+          <li>Signal Processing & Sensor Data Analysis</li>
+          <li>Cloud–Edge Architectures & IoT</li>
+          <li>LLM & RAG Prototyping (GPT-2, embeddings)</li>
+          <li>Data Pipelines, ETL & Calibration Workflows</li>
+        </ul>
+      </section>
+
+      <section class="resume-section">
+        <h2 class="resume-section-title">Technical Stack</h2>
+        <ul class="resume-bullet-list">
+          <li><strong>Languages:</strong> Python, C++, Clojure</li>
+          <li><strong>ML / Data:</strong> NumPy, Pandas, Scikit-Learn, SciPy, TensorFlow, Keras, OpenCV</li>
+          <li><strong>Databases:</strong> SQL, InfluxDB, D-Graph, CosmosDB, KustoDB</li>
+          <li><strong>Infra & Tools:</strong> Docker, Azure IoT, REST APIs, Git, CI/CD</li>
+        </ul>
+      </section>
+
+      <section class="resume-section">
+        <h2 class="resume-section-title">Training & Certifications</h2>
+        <ul class="resume-bullet-list">
+          <li>Machine Learning — Coursera</li>
+          <li>Deep Learning Specialization — Coursera</li>
+          <li>TensorFlow Developer Certificate — Udemy</li>
+        </ul>
+      </section>
+
+      <section class="resume-section">
+        <h2 class="resume-section-title">References</h2>
+        <p class="resume-note">
+          Available upon request (academic and industry references from UNR and G4-Tech).
+        </p>
+      </section>
+    </aside>
+  </div>
+</article>
+{% endblock %}

@@ -1,10 +1,20 @@
 {% extends 'profileapp/base.html' %}
+{% load static %}
 {% block title %}Torch Chatbot{% endblock %}
 
 {% block extra_head %}
+<link rel="stylesheet" href="{% static 'profileapp/css/chatbot.css' %}">
+
 <script>
-  // Django will inject the csrf_token into the template context
   const csrftoken = '{{ csrf_token }}';
+  let activeBot = '{{ active_bot.key }}';
+
+  function selectBot(botKey) {
+    activeBot = botKey;
+    const url = new URL(window.location.href);
+    url.searchParams.set('bot', botKey);
+    window.location.href = url.toString();
+  }
 
   async function sendMessage() {
     const textEl = document.getElementById('message');
@@ -12,15 +22,16 @@
     const userText = textEl.value.trim();
     if (!userText) return;
 
-    // Show user bubble
-    chat.innerHTML += `<div class="bubble user"><p>${userText}</p></div>`;
+    chat.innerHTML += `
+      <div class="bubble user">
+        <p>${userText.replace(/\n/g, '<br>')}</p>
+      </div>`;
     textEl.value = '';
 
-    // Prepare form data
     const form = new FormData();
     form.append('message', userText);
+    form.append('bot', activeBot);
 
-    // Send to Django API with CSRF header
     const resp = await fetch('/api/chat/', {
       method: 'POST',
       headers: {
@@ -38,25 +49,129 @@
       reply = "Error parsing server response.";
     }
 
-    // Show bot bubble
-    chat.innerHTML += `<div class="bubble bot"><p>${reply}</p></div>`;
+    chat.innerHTML += `
+      <div class="bubble bot">
+        <p>${reply.replace(/\n/g, '<br>')}</p>
+      </div>`;
     chat.scrollTop = chat.scrollHeight;
   }
+
+  function handleMessageKeydown(event) {
+    const textarea = event.target;
+
+    if (event.key === 'Enter') {
+      if (event.shiftKey) {
+        return; // newline
+      }
+
+      const value = textarea.value;
+      const caretPos = textarea.selectionStart;
+
+      const lastNewline = value.lastIndexOf('\n', caretPos - 1);
+      const lineStart = lastNewline === -1 ? 0 : lastNewline + 1;
+      const lineEndIdx = value.indexOf('\n', caretPos);
+      const lineEnd = lineEndIdx === -1 ? value.length : lineEndIdx;
+      const currentLine = value.substring(lineStart, lineEnd);
+
+      const numberedMatch = currentLine.match(/^(\s*)(\d+)\.\s+(.*)$/);
+      const bulletMatch = currentLine.match(/^(\s*)([-*])\s+(.*)$/);
+
+      if (numberedMatch) {
+        event.preventDefault();
+        const indent = numberedMatch[1] || '';
+        const num = parseInt(numberedMatch[2], 10) + 1;
+
+        const before = value.substring(0, textarea.selectionStart);
+        const after = value.substring(textarea.selectionEnd);
+        const insertion = '\n' + indent + num + '. ';
+        const newPos = before.length + insertion.length;
+
+        textarea.value = before + insertion + after;
+        textarea.selectionStart = textarea.selectionEnd = newPos;
+        return;
+      } else if (bulletMatch) {
+        event.preventDefault();
+        const indent = bulletMatch[1] || '';
+        const bullet = bulletMatch[2];
+
+        const before = value.substring(0, textarea.selectionStart);
+        const after = value.substring(textarea.selectionEnd);
+        const insertion = '\n' + indent + bullet + ' ';
+        const newPos = before.length + insertion.length;
+
+        textarea.value = before + insertion + after;
+        textarea.selectionStart = textarea.selectionEnd = newPos;
+        return;
+      }
+
+      event.preventDefault();
+      sendMessage();
+    }
+  }
+
+  document.addEventListener('DOMContentLoaded', function () {
+    const textEl = document.getElementById('message');
+    if (textEl) {
+      textEl.addEventListener('keydown', handleMessageKeydown);
+    }
+  });
 </script>
 {% endblock %}
 
 {% block content %}
-<h2>Torch Chatbot (Personal Facts)</h2>
+<h2>Multi-Chatbot Playground</h2>
+
+<div class="bot-selector">
+  <div class="bot-selector-header">
+    <h3>Choose chatbot variant</h3>
+    <p>Pick a level to see how the backend design and capabilities change.</p>
+  </div>
+  <div class="bot-tabs">
+    {% for bot in chatbots %}
+      <button
+        type="button"
+        class="bot-tab {% if bot.key == active_bot.key %}active{% endif %}"
+        onclick="selectBot('{{ bot.key }}')"
+      >
+        <span class="level-pill">Lv. {{ forloop.counter }}</span>
+        <span>{{ bot.name }}</span>
+      </button>
+    {% endfor %}
+  </div>
+</div>
+
+
 <div class="grid">
   <div>
     <div id="chatlog" class="chat" style="height: 360px; overflow: auto; margin-bottom: .6rem;"></div>
-    <textarea id="message" rows="3" placeholder="Ask something about me..."></textarea>
+    <textarea id="message" rows="3" placeholder="Ask something about me, or write a numbered list (1. ...) to see auto-continue."></textarea>
     <button onclick="sendMessage()">Send</button>
-    <p><small>Tip: populate <code>profileapp/data/personal_facts.yaml</code> to teach the bot.</small></p>
+    <p>
+      <small>
+        Enter = send, Shift+Enter = new line. If your current line starts with
+        <code>1. </code>, <code>2. </code>, <code>- </code> or <code>* </code>, Enter will
+        continue the list instead of sending.<br>
+        Populate <code>profileapp/data/personal_facts.yaml</code> to teach the current bot.
+      </small>
+    </p>
   </div>
+
   <div>
-    <h3>How it works</h3>
-    <p>This bot uses a Torch-backed SentenceTransformer to embed your personal facts and find the closest answer by cosine similarity.</p>
+    <h3>{{ active_bot.name }}</h3>
+    <p><em>{{ active_bot.tagline }}</em></p>
+
+    <h4>What this chatbot does</h4>
+    <p>{{ active_bot.description }}</p>
+
+    <h4>How it is achieved (implementation notes)</h4>
+    <pre style="white-space: pre-wrap; font-family: monospace;">{{ active_bot.details }}</pre>
+
+    <p style="margin-top: .5rem;">
+      <small>
+        Currently, only the <strong>Personal Facts Bot</strong> is wired to the backend.
+        Others can be progressively implemented while keeping the same UI.
+      </small>
+    </p>
   </div>
 </div>
 {% endblock %}

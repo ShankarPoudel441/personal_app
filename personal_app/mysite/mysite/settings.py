@@ -6,6 +6,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-change-me'
 DEBUG = True
 ALLOWED_HOSTS = ['*']
+CHATBOT_API_URL = "http://localhost:8001/api/chat"
+
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -63,5 +65,6 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 STATICFILES_DIRS = [BASE_DIR / 'profileapp' / 'static']
+STATIC_ROOT = BASE_DIR / "staticfiles"
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
