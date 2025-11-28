@@ -11,12 +11,16 @@ A website where I introduce myself, and a small LLM-adjacent agent trained on my
 
 ```bash
 ## 🛠️Creating run environment
-conda create -n personalai python=3.10
-conda activate personalai
+conda create -n personalapp python=3.10
+conda activate personalapp
 pip install -r requirements.txt
-## 🚀Launching the Application
+## Manage database to initiate
 cd mysite
+python manage.py makemigrations profileapp
 python manage.py migrate
+##If you need to create superuser for first time:
+##python manage.py createsuperuser
+## 🚀 Lunch the site
 python manage.py runserver
 ```
 
@@ -58,6 +62,8 @@ mysite/
       base.html / home.html / chatbot.html
     static/profileapp/
     data/personal_facts.yaml
+    migrations/
+        infos.py / initials.py
 requirements.txt
 ```
 

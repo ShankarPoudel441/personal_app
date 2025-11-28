@@ -82,3 +82,7 @@ yarn-error.log
 
 # By default, ignore all YAML files:
 *profileapp/data/personal_facts.yaml
+
+
+## Database migrations
+migrations/
